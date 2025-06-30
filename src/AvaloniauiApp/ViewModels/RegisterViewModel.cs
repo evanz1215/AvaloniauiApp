@@ -98,7 +98,7 @@ namespace AvaloniauiApp.ViewModels
                 if (result.User != null)
                 {
                     // 設定當前用戶到 AuthManager
-                    _authManager.SetCurrentUser(result.User);
+                    await _authManager.SetCurrentUserAsync(result.User);
                     
                     // 觸發註冊成功事件
                     RegisterSuccess?.Invoke(result.User);

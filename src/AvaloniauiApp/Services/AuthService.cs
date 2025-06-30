@@ -38,8 +38,8 @@ namespace AvaloniauiApp.Services
                     var loginResponse = JsonSerializer.Deserialize<LoginResponse>(responseContent, _jsonOptions);
                     if (loginResponse != null)
                     {
-                        _tokenService.SetToken(loginResponse.Token);
-                        _tokenService.SetRefreshToken(loginResponse.RefreshToken);
+                        // 根據是否保持登入來決定是否儲存 token
+                        // 這裡先不儲存，讓 LoginViewModel 來控制
                     }
                     return loginResponse;
                 }

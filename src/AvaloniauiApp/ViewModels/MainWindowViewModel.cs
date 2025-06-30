@@ -99,7 +99,7 @@ namespace AvaloniauiApp.ViewModels
         private void Logout()
         {
             // 清除 AuthManager 中的 token 和用戶資訊
-            _authManager.Logout();
+            _ = _authManager.LogoutAsync();
             
             // 清空登入資訊
             Greeting = "歡迎使用系統！";

@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using Avalonia.Controls;
 using AvaloniauiApp.Models;
 using AvaloniauiApp.Services;
@@ -13,6 +14,7 @@ namespace AvaloniauiApp.ViewModels
     {
         private readonly IAuthService _authService;
         private readonly IAuthManager _authManager;
+        private readonly ITokenService _tokenService;
 
         [ObservableProperty]
         [NotifyDataErrorInfo]
@@ -30,16 +32,20 @@ namespace AvaloniauiApp.ViewModels
         [ObservableProperty]
         private bool _isLoading = false;
 
+        [ObservableProperty]
+        private bool _keepLoggedIn = true;
+
         // 登入成功事件
         public event Action<UserInfo>? LoginSuccess;
 
         // 顯示註冊事件
         public event Action? ShowRegister;
 
-        public LoginViewModel(IAuthService authService, IAuthManager authManager)
+        public LoginViewModel(IAuthService authService, IAuthManager authManager, ITokenService tokenService)
         {
             _authService = authService;
             _authManager = authManager;
+            _tokenService = tokenService;
         }
 
         [RelayCommand]
@@ -56,6 +62,8 @@ namespace AvaloniauiApp.ViewModels
 
             try
             {
+                Debug.WriteLine($"LoginViewModel: 開始登入，KeepLoggedIn: {KeepLoggedIn}");
+                
                 var request = new LoginRequest
                 {
                     Username = Username,
@@ -66,19 +74,39 @@ namespace AvaloniauiApp.ViewModels
 
                 if (response?.User != null)
                 {
+                    Debug.WriteLine($"LoginViewModel: 登入成功，用戶: {response.User.UserName}");
+                    Debug.WriteLine($"LoginViewModel: Token存在: {!string.IsNullOrEmpty(response.Token)}");
+                    Debug.WriteLine($"LoginViewModel: RefreshToken存在: {!string.IsNullOrEmpty(response.RefreshToken)}");
+                    
                     // 設定當前用戶到 AuthManager
-                    _authManager.SetCurrentUser(response.User);
+                    if (KeepLoggedIn)
+                    {
+                        Debug.WriteLine("LoginViewModel: 開始保存token到持久化儲存");
+                        // 儲存 token 到持久化儲存
+                        await _tokenService.SetTokenAsync(response.Token);
+                        await _tokenService.SetRefreshTokenAsync(response.RefreshToken);
+                        await _authManager.SetCurrentUserAsync(response.User);
+                        Debug.WriteLine("LoginViewModel: Token保存完成");
+                    }
+                    else
+                    {
+                        Debug.WriteLine("LoginViewModel: 不保存token，只設定記憶體中的用戶");
+                        // 如果不保持登入，只設定記憶體中的用戶，不儲存到持久化儲存
+                        _authManager.SetCurrentUser(response.User);
+                    }
                     
                     // 觸發登入成功事件
                     LoginSuccess?.Invoke(response.User);
                 }
                 else
                 {
+                    Debug.WriteLine("LoginViewModel: 登入失敗，API回傳null");
                     ErrorMessage = "登入失敗，請檢查帳號密碼。";
                 }
             }
             catch (Exception ex)
             {
+                Debug.WriteLine($"LoginViewModel: 登入時發生錯誤: {ex.Message}");
                 ErrorMessage = $"登入時發生錯誤: {ex.Message}";
             }
             finally

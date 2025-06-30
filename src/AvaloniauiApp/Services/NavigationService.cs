@@ -19,7 +19,7 @@ namespace AvaloniauiApp.Services
             _serviceProvider = serviceProvider;
         }
 
-        public async Task NavigateToMainAsync()
+        public Task NavigateToMainAsync()
         {
             var mainWindow = new MainWindow
             {
@@ -28,13 +28,14 @@ namespace AvaloniauiApp.Services
 
             _applicationLifetime.MainWindow = mainWindow;
             mainWindow.Show();
+            return Task.CompletedTask;
         }
 
-        public async Task NavigateToLoginAsync()
+        public Task NavigateToLoginAsync()
         {
             // 由於現在使用單一視窗架構，這個方法不再需要
             // 登入畫面會在主視窗中顯示
-            await Task.CompletedTask;
+            return Task.CompletedTask;
         }
     }
 } 
