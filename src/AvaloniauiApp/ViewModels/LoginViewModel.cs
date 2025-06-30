@@ -12,6 +12,7 @@ namespace AvaloniauiApp.ViewModels
     public partial class LoginViewModel : ViewModelBase
     {
         private readonly IAuthService _authService;
+        private readonly IAuthManager _authManager;
 
         [ObservableProperty]
         [NotifyDataErrorInfo]
@@ -32,9 +33,13 @@ namespace AvaloniauiApp.ViewModels
         // 登入成功事件
         public event Action<UserInfo>? LoginSuccess;
 
-        public LoginViewModel(IAuthService authService)
+        // 顯示註冊事件
+        public event Action? ShowRegister;
+
+        public LoginViewModel(IAuthService authService, IAuthManager authManager)
         {
             _authService = authService;
+            _authManager = authManager;
         }
 
         [RelayCommand]
@@ -61,6 +66,9 @@ namespace AvaloniauiApp.ViewModels
 
                 if (response?.User != null)
                 {
+                    // 設定當前用戶到 AuthManager
+                    _authManager.SetCurrentUser(response.User);
+                    
                     // 觸發登入成功事件
                     LoginSuccess?.Invoke(response.User);
                 }
@@ -77,6 +85,12 @@ namespace AvaloniauiApp.ViewModels
             {
                 IsLoading = false;
             }
+        }
+
+        [RelayCommand]
+        public void ShowRegisterCommand()
+        {
+            ShowRegister?.Invoke();
         }
 
         [RelayCommand]
