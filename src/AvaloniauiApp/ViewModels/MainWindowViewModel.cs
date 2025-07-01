@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using System;
 using AvaloniauiApp.Models;
 using AvaloniauiApp.Services;
+using System.Collections.ObjectModel;
+using AvaloniauiApp.ViewModels;
 
 namespace AvaloniauiApp.ViewModels
 {
@@ -43,6 +45,9 @@ namespace AvaloniauiApp.ViewModels
         [ObservableProperty]
         private string _feedbackMessage = "";
 
+        // 新增：Tab集合
+        public ObservableCollection<TabItemModel> Tabs { get; } = new ObservableCollection<TabItemModel>();
+
         public IRelayCommand RefreshTokenCommand { get; }
         public IRelayCommand EditProfileCommand { get; }
         public IRelayCommand ChangePasswordCommand { get; }
@@ -55,6 +60,12 @@ namespace AvaloniauiApp.ViewModels
             _authManager = authManager;
             _loginViewModel = loginViewModel;
             _registerViewModel = registerViewModel;
+            
+            // 初始化Tabs
+            Tabs.Add(new TabItemModel { Header = "首頁", View = new AvaloniauiApp.Views.HomeTabView() });
+            Tabs.Add(new TabItemModel { Header = "個人資料", View = new AvaloniauiApp.Views.ProfileTabView() });
+            Tabs.Add(new TabItemModel { Header = "設定", View = new AvaloniauiApp.Views.SettingsTabView() });
+            Tabs.Add(new TabItemModel { Header = "幫助", View = new AvaloniauiApp.Views.HelpTabView() });
             
             // 訂閱登入成功事件
             _loginViewModel.LoginSuccess += OnLoginSuccess;

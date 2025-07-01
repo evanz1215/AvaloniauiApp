@@ -11,78 +11,26 @@
     <Border Background="#f8f9fa" CornerRadius="8" Margin="20">
         <Grid RowDefinitions="Auto,*" Margin="20">
             
-            <!-- Tab Control -->
-            <TabControl Grid.Row="0" 
-                        Background="White" 
+            <!-- 動態TabControl -->
+            <TabControl Grid.Row="0"
+                        ItemsSource="{Binding Tabs}"
+                        SelectedIndex="{Binding SelectedTabIndex}"
+                        Background="White"
                         BorderThickness="0"
                         CornerRadius="8"
-                        Margin="0,0,0,20"
-                        SelectedIndex="{Binding SelectedTabIndex}">
-                
-                <!-- 首頁 Tab -->
-                <TabItem Header="首頁" 
-                         Background="Transparent"
-                         BorderThickness="0">
-                    <TabItem.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="10,5">
-                                <TextBlock Text="🏠" FontSize="16" Margin="0,0,5,0"/>
-                                <TextBlock Text="首頁" FontSize="14" FontWeight="Medium"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </TabItem.HeaderTemplate>
-                    
-                    <views:HomeTabView/>
-                </TabItem>
-
-                <!-- 個人資料 Tab -->
-                <TabItem Header="個人資料" 
-                         Background="Transparent"
-                         BorderThickness="0">
-                    <TabItem.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="10,5">
-                                <TextBlock Text="👤" FontSize="16" Margin="0,0,5,0"/>
-                                <TextBlock Text="個人資料" FontSize="14" FontWeight="Medium"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </TabItem.HeaderTemplate>
-                    
-                    <views:ProfileTabView/>
-                </TabItem>
-
-                <!-- 設定 Tab -->
-                <TabItem Header="設定" 
-                         Background="Transparent"
-                         BorderThickness="0">
-                    <TabItem.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="10,5">
-                                <TextBlock Text="⚙️" FontSize="16" Margin="0,0,5,0"/>
-                                <TextBlock Text="設定" FontSize="14" FontWeight="Medium"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </TabItem.HeaderTemplate>
-                    
-                    <views:SettingsTabView/>
-                </TabItem>
-
-                <!-- 幫助 Tab -->
-                <TabItem Header="幫助" 
-                         Background="Transparent"
-                         BorderThickness="0">
-                    <TabItem.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="10,5">
-                                <TextBlock Text="❓" FontSize="16" Margin="0,0,5,0"/>
-                                <TextBlock Text="幫助" FontSize="14" FontWeight="Medium"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </TabItem.HeaderTemplate>
-                    
-                    <views:HelpTabView/>
-                </TabItem>
-
+                        Margin="0,0,0,20">
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="10,5">
+                            <TextBlock Text="{Binding Header}" FontSize="14" FontWeight="Medium"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+                <TabControl.ContentTemplate>
+                    <DataTemplate x:DataType="vm:TabItemModel">
+                        <ContentControl Content="{Binding View}"/>
+                    </DataTemplate>
+                </TabControl.ContentTemplate>
             </TabControl>
 
         </Grid>
