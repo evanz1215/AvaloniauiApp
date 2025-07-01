@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
              x:Class="AvaloniauiApp.Views.HomeTabView"
-             x:DataType="vm:MainWindowViewModel">
+             x:DataType="vm:MainWindowViewModel"
+             Background="White">
 
     <ScrollViewer>
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" 
@@ -18,7 +19,7 @@
                        FontSize="32" FontWeight="Bold"
                        HorizontalAlignment="Center"
                        Margin="0,0,0,20"
-                       Foreground="#333333"/>
+                       Foreground="Black"/>
 
             <!-- 使用者資訊 -->
             <TextBlock Grid.Row="1" Grid.Column="1"
@@ -26,7 +27,7 @@
                        FontSize="18"
                        HorizontalAlignment="Center"
                        Margin="0,0,0,30"
-                       Foreground="#666666"/>
+                       Foreground="Black"/>
 
             <!-- 成功圖示或訊息 -->
             <StackPanel Grid.Row="2" Grid.Column="1"
@@ -50,7 +51,7 @@
                        FontSize="14"
                        HorizontalAlignment="Center"
                        Margin="0,20,0,10"
-                       Foreground="#666666"/>
+                       Foreground="Black"/>
 
             <!-- Refresh Token 測試按鈕 -->
             <Button Grid.Row="4" Grid.Column="1"

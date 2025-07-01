@@ -1,124 +1,131 @@
 <UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="using:AvaloniauiApp.ViewModels"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
-             x:Class="AvaloniauiApp.Views.SettingsTabView"
-             x:DataType="vm:MainWindowViewModel">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:AvaloniauiApp.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+    x:Class="AvaloniauiApp.Views.SettingsTabView"
+    x:DataType="vm:MainWindowViewModel"
+    Background="White" Foreground="Black">
 
     <ScrollViewer>
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" 
-              ColumnDefinitions="*,Auto,*"
-              Margin="40">
-            
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+            ColumnDefinitions="*,Auto,*"
+            Margin="40">
+
             <!-- 設定標題 -->
             <TextBlock Grid.Row="0" Grid.Column="1"
-                       Text="系統設定"
-                       FontSize="28" FontWeight="Bold"
-                       HorizontalAlignment="Center"
-                       Margin="0,0,0,30"
-                       Foreground="#333333"/>
+                Text="系統設定"
+                FontSize="28" FontWeight="Bold"
+                HorizontalAlignment="Center"
+                Margin="0,0,0,30"
+                Foreground="Black" />
 
             <!-- 通知設定 -->
             <Border Grid.Row="1" Grid.Column="1"
-                    Background="White"
-                    CornerRadius="8"
-                    Padding="20"
-                    Margin="0,0,0,15"
-                    MinWidth="300">
+                Background="White"
+                CornerRadius="8"
+                Padding="20"
+                Margin="0,0,0,15"
+                MinWidth="300">
                 <StackPanel>
                     <TextBlock Text="通知設定"
-                               FontSize="18" FontWeight="Medium"
-                               Margin="0,0,0,15"
-                               Foreground="#333333"/>
-                    <CheckBox Content="啟用推播通知" 
-                              IsChecked="True"
-                              Margin="0,0,0,10"/>
-                    <CheckBox Content="啟用電子郵件通知" 
-                              IsChecked="True"
-                              Margin="0,0,0,10"/>
-                    <CheckBox Content="啟用簡訊通知" 
-                              IsChecked="False"/>
+                        FontSize="18" FontWeight="Medium"
+                        Margin="0,0,0,15"
+                        Foreground="Black" />
+                    <CheckBox Content="啟用推播通知"
+                        Foreground="Black"
+                        IsChecked="True"
+                        Margin="0,0,0,10" />
+                    <CheckBox Content="啟用電子郵件通知"
+                        Foreground="Black"
+                        IsChecked="True"
+                        Margin="0,0,0,10" />
+                    <CheckBox Content="啟用簡訊通知"
+                        Foreground="Black"
+                        IsChecked="False" />
                 </StackPanel>
             </Border>
 
             <!-- 隱私設定 -->
             <Border Grid.Row="2" Grid.Column="1"
-                    Background="White"
-                    CornerRadius="8"
-                    Padding="20"
-                    Margin="0,0,0,15"
-                    MinWidth="300">
+                Background="White"
+                CornerRadius="8"
+                Padding="20"
+                Margin="0,0,0,15"
+                MinWidth="300">
                 <StackPanel>
                     <TextBlock Text="隱私設定"
-                               FontSize="18" FontWeight="Medium"
-                               Margin="0,0,0,15"
-                               Foreground="#333333"/>
-                    <CheckBox Content="允許個人資料搜尋" 
-                              IsChecked="False"
-                              Margin="0,0,0,10"/>
-                    <CheckBox Content="顯示上線狀態" 
-                              IsChecked="True"
-                              Margin="0,0,0,10"/>
-                    <CheckBox Content="允許第三方存取" 
-                              IsChecked="False"/>
+                        FontSize="18" FontWeight="Medium"
+                        Margin="0,0,0,15"
+                        Foreground="Black" />
+                    <CheckBox Content="允許個人資料搜尋"
+                        IsChecked="False"
+                        Margin="0,0,0,10"
+                        Foreground="Black" />
+                    <CheckBox Content="顯示上線狀態"
+                        IsChecked="True"
+                        Margin="0,0,0,10"
+                        Foreground="Black" />
+                    <CheckBox Content="允許第三方存取"
+                        IsChecked="False"
+                        Foreground="Black" />
                 </StackPanel>
             </Border>
 
             <!-- 語言設定 -->
             <Border Grid.Row="3" Grid.Column="1"
-                    Background="White"
-                    CornerRadius="8"
-                    Padding="20"
-                    Margin="0,0,0,15"
-                    MinWidth="300">
+                Background="White"
+                CornerRadius="8"
+                Padding="20"
+                Margin="0,0,0,15"
+                MinWidth="300">
                 <StackPanel>
                     <TextBlock Text="語言設定"
-                               FontSize="18" FontWeight="Medium"
-                               Margin="0,0,0,15"
-                               Foreground="#333333"/>
-                    <ComboBox SelectedIndex="0" 
-                              HorizontalAlignment="Stretch">
-                        <ComboBoxItem Content="繁體中文"/>
-                        <ComboBoxItem Content="English"/>
-                        <ComboBoxItem Content="日本語"/>
+                        FontSize="18" FontWeight="Medium"
+                        Margin="0,0,0,15"
+                        Foreground="Black" />
+                    <ComboBox SelectedIndex="0"
+                        HorizontalAlignment="Stretch">
+                        <ComboBoxItem Content="繁體中文" Foreground="Black" />
+                        <ComboBoxItem Content="English" Foreground="Black" />
+                        <ComboBoxItem Content="日本語" Foreground="Black" />
                     </ComboBox>
                 </StackPanel>
             </Border>
 
             <!-- 主題設定 -->
             <Border Grid.Row="4" Grid.Column="1"
-                    Background="White"
-                    CornerRadius="8"
-                    Padding="20"
-                    Margin="0,0,0,20"
-                    MinWidth="300">
+                Background="White"
+                CornerRadius="8"
+                Padding="20"
+                Margin="0,0,0,20"
+                MinWidth="300">
                 <StackPanel>
                     <TextBlock Text="主題設定"
-                               FontSize="18" FontWeight="Medium"
-                               Margin="0,0,0,15"
-                               Foreground="#333333"/>
-                    <ComboBox SelectedIndex="0" 
-                              HorizontalAlignment="Stretch">
-                        <ComboBoxItem Content="淺色主題"/>
-                        <ComboBoxItem Content="深色主題"/>
-                        <ComboBoxItem Content="自動"/>
+                        FontSize="18" FontWeight="Medium"
+                        Margin="0,0,0,15"
+                        Foreground="Black" />
+                    <ComboBox SelectedIndex="0"
+                        HorizontalAlignment="Stretch">
+                        <ComboBoxItem Content="淺色主題" Foreground="Black" />
+                        <ComboBoxItem Content="深色主題" Foreground="Black" />
+                        <ComboBoxItem Content="自動" Foreground="Black" />
                     </ComboBox>
                 </StackPanel>
             </Border>
 
             <!-- 儲存設定按鈕 -->
             <Button Grid.Row="5" Grid.Column="1"
-                    Content="儲存設定"
-                    Command="{Binding SaveSettingsCommand}"
-                    FontSize="14"
-                    Padding="30,10"
-                    Background="#28a745"
-                    Foreground="White"
-                    BorderThickness="0"
-                    CornerRadius="4"
-                    HorizontalAlignment="Center"/>
+                Content="儲存設定"
+                Command="{Binding SaveSettingsCommand}"
+                FontSize="14"
+                Padding="30,10"
+                Background="#28a745"
+                Foreground="White"
+                BorderThickness="0"
+                CornerRadius="4"
+                HorizontalAlignment="Center" />
 
         </Grid>
     </ScrollViewer>

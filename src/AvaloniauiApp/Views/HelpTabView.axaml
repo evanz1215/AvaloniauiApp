@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
              x:Class="AvaloniauiApp.Views.HelpTabView"
-             x:DataType="vm:MainWindowViewModel">
+             x:DataType="vm:MainWindowViewModel"
+             Background="White">
 
     <ScrollViewer>
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" 
@@ -18,7 +19,7 @@
                        FontSize="28" FontWeight="Bold"
                        HorizontalAlignment="Center"
                        Margin="0,0,0,30"
-                       Foreground="#333333"/>
+                       Foreground="Black"/>
 
             <!-- 常見問題 -->
             <Border Grid.Row="1" Grid.Column="1"
@@ -31,26 +32,29 @@
                     <TextBlock Text="常見問題"
                                FontSize="18" FontWeight="Medium"
                                Margin="0,0,0,15"
-                               Foreground="#333333"/>
+                               Foreground="Black"/>
                     <Expander Header="如何修改密碼？" 
                               IsExpanded="False"
                               Margin="0,0,0,10">
                         <TextBlock Text="請前往「個人資料」頁面，點擊「修改密碼」按鈕進行密碼修改。"
                                    TextWrapping="Wrap"
-                                   Margin="10"/>
+                                   Margin="10"
+                                   Foreground="Black"/>
                     </Expander>
                     <Expander Header="如何啟用雙重認證？" 
                               IsExpanded="False"
                               Margin="0,0,0,10">
                         <TextBlock Text="請前往「設定」頁面，在安全設定中啟用雙重認證功能。"
                                    TextWrapping="Wrap"
-                                   Margin="10"/>
+                                   Margin="10"
+                                   Foreground="Black"/>
                     </Expander>
                     <Expander Header="忘記密碼怎麼辦？" 
                               IsExpanded="False">
                         <TextBlock Text="請點擊登入頁面的「忘記密碼」連結，系統會發送重設密碼的電子郵件給您。"
                                    TextWrapping="Wrap"
-                                   Margin="10"/>
+                                   Margin="10"
+                                   Foreground="Black"/>
                     </Expander>
                 </StackPanel>
             </Border>
@@ -66,18 +70,18 @@
                     <TextBlock Text="聯絡我們"
                                FontSize="18" FontWeight="Medium"
                                Margin="0,0,0,15"
-                               Foreground="#333333"/>
+                               Foreground="Black"/>
                     <TextBlock Text="📧 客服信箱：support@example.com"
                                FontSize="14"
                                Margin="0,0,0,8"
-                               Foreground="#666666"/>
+                               Foreground="Black"/>
                     <TextBlock Text="📞 客服電話：(02) 1234-5678"
                                FontSize="14"
                                Margin="0,0,0,8"
-                               Foreground="#666666"/>
+                               Foreground="Black"/>
                     <TextBlock Text="🕒 服務時間：週一至週五 9:00-18:00"
                                FontSize="14"
-                               Foreground="#666666"/>
+                               Foreground="Black"/>
                 </StackPanel>
             </Border>
 
@@ -92,7 +96,7 @@
                     <TextBlock Text="意見回饋"
                                FontSize="18" FontWeight="Medium"
                                Margin="0,0,0,15"
-                               Foreground="#333333"/>
+                               Foreground="Black"/>
                     <TextBox Watermark="請輸入您的意見或建議..."
                              AcceptsReturn="True"
                              Height="100"

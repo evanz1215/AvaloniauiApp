@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
              x:Class="AvaloniauiApp.Views.ProfileTabView"
-             x:DataType="vm:MainWindowViewModel">
+             x:DataType="vm:MainWindowViewModel"
+             Background="White">
 
     <ScrollViewer>
         <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" 
@@ -18,7 +19,7 @@
                        FontSize="28" FontWeight="Bold"
                        HorizontalAlignment="Center"
                        Margin="0,0,0,30"
-                       Foreground="#333333"/>
+                       Foreground="Black"/>
 
             <!-- 用戶頭像區域 -->
             <Border Grid.Row="1" Grid.Column="1"
@@ -41,11 +42,11 @@
                            FontSize="20" FontWeight="Medium"
                            HorizontalAlignment="Center"
                            Margin="0,0,0,10"
-                           Foreground="#333333"/>
+                           Foreground="Black"/>
                 <TextBlock Text="{Binding UserInfo}"
                            FontSize="16"
                            HorizontalAlignment="Center"
-                           Foreground="#666666"/>
+                           Foreground="Black"/>
             </StackPanel>
 
             <!-- 編輯個人資料按鈕 -->
