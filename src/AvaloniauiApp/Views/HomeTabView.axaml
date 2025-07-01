@@ -1,0 +1,83 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:AvaloniauiApp.ViewModels"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             x:Class="AvaloniauiApp.Views.HomeTabView"
+             x:DataType="vm:MainWindowViewModel">
+
+    <ScrollViewer>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" 
+              ColumnDefinitions="*,Auto,*"
+              Margin="40">
+            
+            <!-- 歡迎標題 -->
+            <TextBlock Grid.Row="0" Grid.Column="1"
+                       Text="{Binding Greeting}"
+                       FontSize="32" FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20"
+                       Foreground="#333333"/>
+
+            <!-- 使用者資訊 -->
+            <TextBlock Grid.Row="1" Grid.Column="1"
+                       Text="{Binding UserInfo}"
+                       FontSize="18"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,30"
+                       Foreground="#666666"/>
+
+            <!-- 成功圖示或訊息 -->
+            <StackPanel Grid.Row="2" Grid.Column="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <TextBlock Text="✓" 
+                           FontSize="48" 
+                           Foreground="#28a745"
+                           FontWeight="Bold"
+                           Margin="0,0,10,0"/>
+                <TextBlock Text="登入成功！"
+                           FontSize="24"
+                           Foreground="#28a745"
+                           FontWeight="Medium"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <!-- Refresh Token 狀態 -->
+            <TextBlock Grid.Row="3" Grid.Column="1"
+                       Text="{Binding RefreshTokenStatus}"
+                       FontSize="14"
+                       HorizontalAlignment="Center"
+                       Margin="0,20,0,10"
+                       Foreground="#666666"/>
+
+            <!-- Refresh Token 測試按鈕 -->
+            <Button Grid.Row="4" Grid.Column="1"
+                    Content="測試 Refresh Token"
+                    Command="{Binding RefreshTokenCommand}"
+                    FontSize="14"
+                    Padding="20,8"
+                    Margin="0,0,0,20"
+                    Background="#17a2b8"
+                    Foreground="White"
+                    BorderThickness="0"
+                    CornerRadius="4"
+                    HorizontalAlignment="Center"/>
+
+            <!-- 登出按鈕 -->
+            <Button Grid.Row="5" Grid.Column="1"
+                    Content="登出"
+                    Command="{Binding LogoutCommand}"
+                    FontSize="16"
+                    Padding="30,10"
+                    Margin="0,30,0,0"
+                    Background="#dc3545"
+                    Foreground="White"
+                    BorderThickness="0"
+                    CornerRadius="4"
+                    HorizontalAlignment="Center"/>
+
+        </Grid>
+    </ScrollViewer>
+</UserControl> 
