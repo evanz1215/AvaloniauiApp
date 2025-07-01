@@ -346,10 +346,10 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-  # Avalonia specific
-  *.axaml.g.cs
-  *.axaml.csproj
-  *.axaml.sln
+# Avalonia specific
+*.axaml.g.cs
+*.axaml.csproj
+*.axaml.sln
 
 # User-specific files
 *.rsuser
